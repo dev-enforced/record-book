@@ -1,10 +1,12 @@
 import "./App.css";
-import { Navbar } from "./components";
+import { Navbar, RecordListingTable, SearchSection } from "./components";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <SearchSection />
+      <RecordListingTable />
     </div>
   );
 }
