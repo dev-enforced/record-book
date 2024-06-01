@@ -1,5 +1,5 @@
 import "./App.css";
-import { Navbar, RecordListingTable, SearchSection } from "./components";
+import { Navbar, RecordListingTable, SearchSection } from "@/components";
 
 function App() {
   return (
