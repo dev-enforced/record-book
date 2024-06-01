@@ -14,6 +14,16 @@
   box-sizing: border-box;
 }
 
+/* Remove the Up and Down arrows (Spinner) in number type inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  --moz-appearance: textfield;
+}
+
 .container-flex {
   display: flex;
 }
