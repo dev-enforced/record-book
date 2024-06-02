@@ -1,0 +1,31 @@
+.sort_list_wrapper {
+  color: var(--secondary);
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(202, 216, 250, 0.34);
+  padding: 1rem 0;
+  white-space: nowrap;
+  background-color: var(--white);
+  overflow: hidden;
+  font-weight: 400;
+}
+
+.sort_list_wrapper_list_item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4rem 8px 2rem;
+}
+
+.sort_list_wrapper_list_item_icon {
+  stroke: #575a6b;
+  scale: 0.8;
+}
+
+.highlighted_list_item {
+  color: #ff5b91;
+  background-color: #fff2f6;
+}
+
+.highlighted_list_item_icon {
+  stroke: #ff5b91;
+}
