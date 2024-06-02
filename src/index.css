@@ -72,3 +72,13 @@ input[type="number"] {
   font-weight: 800;
   font-style: normal;
 }
+
+.rotate-180 {
+  rotate: 180deg;
+}
+
+.sort_options_classes {
+  position: absolute;
+  top: 100%;
+  left: 1.5rem;
+}
