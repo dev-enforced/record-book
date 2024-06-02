@@ -1,0 +1,34 @@
+.record_listing_table_wrapper {
+  padding: 2rem 0;
+  margin: 0 2rem;
+  border: 1px solid red;
+}
+
+.record_listing_table {
+  width: 100%;
+}
+
+.record_listing_table_header {
+  background-color: #f7f7f7;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-color: #d9d9d9;
+}
+
+.record_listing_table_header_row {
+  text-align: left;
+}
+
+.record_listing_table_header_column_wrapper {
+  padding: 10px 0 10px 1.5rem;
+  position: relative;
+  user-select: none;
+}
+
+.record_listing_table_header_column_wrapper > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  width: fit-content;
+  padding: 8px 12px;
+}
