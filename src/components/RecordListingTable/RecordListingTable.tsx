@@ -1,54 +1,12 @@
-import { RECORDS_LISTING_COLUMNS } from "@/data/recordsListing.config";
+import { RECORDS_LISTING_COLUMNS } from "@/data";
 import { useOnClickOutside } from "@/hooks";
 import { useRef, useState } from "react";
 import styles from "./RecordListingTable.module.css";
-
-const mock_data = [
-  {
-    id: "p1",
-    name: "Kartik Aryan",
-    company: "Frontpoint Partners",
-    gender: "Male",
-    number: 7101920048,
-  },
-  {
-    id: "p2",
-    name: "Kiara Advani",
-    company: "Brownfield Fund",
-    gender: "Female",
-    number: 9101921048,
-  },
-  {
-    id: "p3",
-    name: "Ayushman Khurana",
-    company: "Scion Capital",
-    gender: "Male",
-    number: 7000921048,
-  },
-  {
-    id: "p4",
-    name: "Kriti Sanon",
-    company: "Milenium",
-    gender: "Female",
-    number: 7000921048,
-  },
-  {
-    id: "p5",
-    name: "Varun Dhawan",
-    company: "Milenium",
-    gender: "Female",
-    number: 7000921048,
-  },
-];
+import { RecordData } from "@/types";
+import { useRecords } from "@/context";
 
 interface RecordListingTableRowProps {
-  recordData: {
-    id: string;
-    name: string;
-    company: string;
-    gender: string;
-    number: number;
-  };
+  recordData: RecordData;
 }
 
 const RecordListingTableColumns = () => {
@@ -130,12 +88,13 @@ const RecordListingTableRow = ({ recordData }: RecordListingTableRowProps) => {
 };
 
 const RecordListingTable = () => {
+  const { recordsList } = useRecords();
   return (
     <section className={styles.record_listing_table_wrapper}>
       <table className={styles.record_listing_table}>
         <RecordListingTableColumns />
         <tbody>
-          {mock_data.map((record) => {
+          {recordsList.map((record) => {
             return (
               <RecordListingTableRow recordData={record} key={record.id} />
             );

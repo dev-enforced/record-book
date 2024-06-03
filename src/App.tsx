@@ -1,11 +1,14 @@
 import "./App.css";
 import { Navbar, RecordListingTable, SearchSection } from "@/components";
+import { RecordsContextProvider } from "./context";
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <SearchSection />
-      <RecordListingTable />
+      <RecordsContextProvider>
+        <Navbar />
+        <SearchSection />
+        <RecordListingTable />
+      </RecordsContextProvider>
     </div>
   );
 }
