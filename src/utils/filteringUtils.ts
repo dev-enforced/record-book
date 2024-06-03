@@ -13,7 +13,7 @@ export const generateFilteredRecordsList = ({
     return currentRecordsList;
   } else if (nameSearched && phoneNumberSearched) {
     return currentRecordsList.filter(
-      ({ name: currentRecordName, number: currentRecordPhoneNumber }) => {
+      ({ name: currentRecordName, phoneNumber: currentRecordPhoneNumber }) => {
         return (
           currentRecordName === nameSearched &&
           phoneNumberSearched === currentRecordPhoneNumber.toString()
@@ -25,9 +25,11 @@ export const generateFilteredRecordsList = ({
       return currentRecordName === nameSearched;
     });
   } else if (phoneNumberSearched) {
-    return currentRecordsList.filter(({ number: currentRecordPhoneNumber }) => {
-      return currentRecordPhoneNumber.toString() === phoneNumberSearched;
-    });
+    return currentRecordsList.filter(
+      ({ phoneNumber: currentRecordPhoneNumber }) => {
+        return currentRecordPhoneNumber.toString() === phoneNumberSearched;
+      }
+    );
   } else {
     return currentRecordsList;
   }

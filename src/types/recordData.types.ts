@@ -3,5 +3,5 @@ export interface RecordData {
   name: string;
   company: string;
   gender: string;
-  number: number;
+  phoneNumber: string;
 }

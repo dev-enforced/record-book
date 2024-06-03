@@ -95,7 +95,7 @@ export const RECORDS_LISTING_COLUMNS = [
   },
   {
     label: "Phone Number",
-    value: "number",
+    value: "phoneNumber",
     Icon: null,
     hasFunctionality: false,
     Functionality: null,

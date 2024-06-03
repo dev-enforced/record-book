@@ -21,6 +21,7 @@ interface RecordsContextType {
   isAddNewRecord: boolean;
   setIsAddNewRecord: Dispatch<SetStateAction<boolean>>;
   removeSelectedRecord: (selectedRecord: RecordData) => void;
+  addNewRecord: (newRecord: RecordData) => void;
 }
 
 const RecordsContext = createContext<RecordsContextType>(
@@ -47,6 +48,10 @@ const RecordsContextProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const addNewRecord = (newRecordDetails: RecordData) => {
+    setRecordsList((currentList) => [...currentList, { ...newRecordDetails }]);
+  };
+
   const filteredOrSortedRecordsList: Array<RecordData> =
     generateSortedRecordsList({
       currentRecordsList: generateFilteredRecordsList({
@@ -67,6 +72,7 @@ const RecordsContextProvider = ({ children }: { children: ReactNode }) => {
         setIsAddNewRecord,
         filteredOrSortedRecordsList,
         removeSelectedRecord,
+        addNewRecord,
       }}
     >
       {children}

@@ -1,9 +1,6 @@
 import { RecordData } from "@/types";
 
-export const ascendingOrderSort = (
-  item_one: string | number,
-  item_two: string | number
-) => {
+export const ascendingOrderSort = (item_one: string, item_two: string) => {
   if (item_one < item_two) {
     return -1;
   } else if (item_one > item_two) {
@@ -13,10 +10,7 @@ export const ascendingOrderSort = (
   }
 };
 
-export const descendingSort = (
-  item_one: string | number,
-  item_two: string | number
-) => {
+export const descendingSort = (item_one: string, item_two: string) => {
   if (item_one < item_two) {
     return 1;
   } else if (item_one > item_two) {
