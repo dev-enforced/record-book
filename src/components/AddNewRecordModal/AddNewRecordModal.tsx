@@ -114,7 +114,7 @@ const AddNewRecordModal = () => {
                   phoneNumber: changeEvent.target.value,
                 }));
               }}
-              placeholder="Enter Phone Number"
+              placeholder="Enter 10 digit mobile number"
               className={styles.add_new_record_form_input}
               maxLength={10}
             />
