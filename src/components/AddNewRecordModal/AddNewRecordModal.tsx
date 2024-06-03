@@ -116,6 +116,7 @@ const AddNewRecordModal = () => {
               }}
               placeholder="Enter Phone Number"
               className={styles.add_new_record_form_input}
+              maxLength={10}
             />
           </div>
 
