@@ -15,19 +15,27 @@ export const generateFilteredRecordsList = ({
     return currentRecordsList.filter(
       ({ name: currentRecordName, phoneNumber: currentRecordPhoneNumber }) => {
         return (
-          currentRecordName === nameSearched &&
-          phoneNumberSearched === currentRecordPhoneNumber.toString()
+          currentRecordName
+            .toLowerCase()
+            .includes(nameSearched.toLowerCase()) &&
+          currentRecordPhoneNumber
+            .toLowerCase()
+            .includes(phoneNumberSearched.toLowerCase())
         );
       }
     );
   } else if (nameSearched) {
     return currentRecordsList.filter(({ name: currentRecordName }) => {
-      return currentRecordName === nameSearched;
+      return currentRecordName
+        .toLowerCase()
+        .includes(nameSearched.toLowerCase());
     });
   } else if (phoneNumberSearched) {
     return currentRecordsList.filter(
       ({ phoneNumber: currentRecordPhoneNumber }) => {
-        return currentRecordPhoneNumber.toString() === phoneNumberSearched;
+        return currentRecordPhoneNumber
+          .toLowerCase()
+          .includes(phoneNumberSearched.toLowerCase());
       }
     );
   } else {
