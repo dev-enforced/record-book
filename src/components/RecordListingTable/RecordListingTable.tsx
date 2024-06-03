@@ -88,13 +88,13 @@ const RecordListingTableRow = ({ recordData }: RecordListingTableRowProps) => {
 };
 
 const RecordListingTable = () => {
-  const { recordsList } = useRecords();
+  const { filteredOrSortedRecordsList } = useRecords();
   return (
     <section className={styles.record_listing_table_wrapper}>
       <table className={styles.record_listing_table}>
         <RecordListingTableColumns />
         <tbody>
-          {recordsList.map((record) => {
+          {filteredOrSortedRecordsList.map((record) => {
             return (
               <RecordListingTableRow recordData={record} key={record.id} />
             );

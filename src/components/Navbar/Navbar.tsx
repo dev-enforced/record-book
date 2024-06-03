@@ -1,6 +1,8 @@
+import { useRecords } from "@/context";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
+  const { setIsAddNewRecord } = useRecords();
   return (
     <nav className={`container-flex-align-center ${styles.navbar_wrapper}`}>
       <div>
@@ -8,7 +10,10 @@ const Navbar = () => {
       </div>
 
       <div>
-        <button className={styles.add_new_record_btn}>
+        <button
+          className={styles.add_new_record_btn}
+          onClick={() => setIsAddNewRecord(true)}
+        >
           <p>Add New Record</p>
         </button>
       </div>

@@ -1,6 +1,10 @@
 import { INITIAL_RECORDS_LIST } from "@/data";
 import { RecordData } from "@/types";
 import {
+  generateFilteredRecordsList,
+  generateSortedRecordsList,
+} from "@/utils";
+import {
   Dispatch,
   ReactNode,
   SetStateAction,
@@ -29,8 +33,21 @@ const RecordsContextProvider = ({ children }: { children: ReactNode }) => {
   const [isAddNewRecord, setIsAddNewRecord] = useState<boolean>(false);
 
   const [searchParams] = useSearchParams();
+  const nameSearched = searchParams.get("name") ?? "",
+    phoneNumberSearched = searchParams.get("phoneNumber") ?? "",
+    sortingColumn = searchParams.get("sort_key_column") ?? "",
+    sortingOrder = searchParams.get("sort_key") ?? "";
 
-  const filteredOrSortedRecordsList: Array<RecordData> = [];
+  const filteredOrSortedRecordsList: Array<RecordData> =
+    generateSortedRecordsList({
+      currentRecordsList: generateFilteredRecordsList({
+        currentRecordsList: recordsList,
+        nameSearched,
+        phoneNumberSearched,
+      }),
+      sortingColumn,
+      sortingOrder,
+    });
 
   return (
     <RecordsContext.Provider
