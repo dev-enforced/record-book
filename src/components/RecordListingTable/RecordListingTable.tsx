@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import styles from "./RecordListingTable.module.css";
 import { RecordData } from "@/types";
 import { useRecords } from "@/context";
+import { ReactComponent as DeleteRecord } from "@/assets/Delete.svg";
+import { ReactComponent as EmptyList } from "@/assets/NoDataFound.svg";
 
 interface RecordListingTableRowProps {
   recordData: RecordData;
@@ -69,16 +71,31 @@ const RecordListingTableColumns = () => {
             );
           }
         )}
+        <th className={styles.record_listing_table_header_column_wrapper}>
+          <span>Actions</span>
+        </th>
       </tr>
     </thead>
   );
 };
 
 const RecordListingTableRow = ({ recordData }: RecordListingTableRowProps) => {
+  const { removeSelectedRecord } = useRecords();
   return (
     <tr className={styles.record_listing_table_data_row}>
       {Object.entries(recordData).reduce((elements, [key, value]) => {
-        if (key !== "id") {
+        if (key === "id") {
+          elements.push(
+            <td key={value}>
+              <DeleteRecord
+                onClick={() => {
+                  removeSelectedRecord(recordData);
+                }}
+                className={styles.record_listing_table_data_row_delete_icon}
+              />
+            </td>
+          );
+        } else {
           elements.push(<td key={value}>{value}</td>);
         }
         return elements;
@@ -91,16 +108,22 @@ const RecordListingTable = () => {
   const { filteredOrSortedRecordsList } = useRecords();
   return (
     <section className={styles.record_listing_table_wrapper}>
-      <table className={styles.record_listing_table}>
-        <RecordListingTableColumns />
-        <tbody>
-          {filteredOrSortedRecordsList.map((record) => {
-            return (
-              <RecordListingTableRow recordData={record} key={record.id} />
-            );
-          })}
-        </tbody>
-      </table>
+      {filteredOrSortedRecordsList.length !== 0 ? (
+        <table className={styles.record_listing_table}>
+          <RecordListingTableColumns />
+          <tbody>
+            {filteredOrSortedRecordsList.map((record) => {
+              return (
+                <RecordListingTableRow recordData={record} key={record.id} />
+              );
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <div className={`container-flex-center ${styles.empty_list_container}`}>
+          <EmptyList />
+        </div>
+      )}
     </section>
   );
 };

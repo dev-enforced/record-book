@@ -52,3 +52,14 @@
 .record_listing_table_data_row > td {
   padding: 1.5rem 0 1.5rem 2.5rem;
 }
+
+.record_listing_table_data_row_delete_icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.empty_list_container {
+  height: 50vh;
+}

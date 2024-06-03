@@ -20,6 +20,7 @@ interface RecordsContextType {
   filteredOrSortedRecordsList: Array<RecordData>;
   isAddNewRecord: boolean;
   setIsAddNewRecord: Dispatch<SetStateAction<boolean>>;
+  removeSelectedRecord: (selectedRecord: RecordData) => void;
 }
 
 const RecordsContext = createContext<RecordsContextType>(
@@ -37,6 +38,14 @@ const RecordsContextProvider = ({ children }: { children: ReactNode }) => {
     phoneNumberSearched = searchParams.get("phoneNumber") ?? "",
     sortingColumn = searchParams.get("sort_key_column") ?? "",
     sortingOrder = searchParams.get("sort_key") ?? "";
+
+  const removeSelectedRecord = ({ id: selectedRecordId }: RecordData) => {
+    setRecordsList((currentList) =>
+      currentList.filter(
+        ({ id: currentRecordId }) => currentRecordId !== selectedRecordId
+      )
+    );
+  };
 
   const filteredOrSortedRecordsList: Array<RecordData> =
     generateSortedRecordsList({
@@ -57,6 +66,7 @@ const RecordsContextProvider = ({ children }: { children: ReactNode }) => {
         isAddNewRecord,
         setIsAddNewRecord,
         filteredOrSortedRecordsList,
+        removeSelectedRecord,
       }}
     >
       {children}
