@@ -21,9 +21,12 @@ const AddNewRecordModal = () => {
       formData.company &&
       formData.phoneNumber
     ) {
-      addNewRecord(formData);
+      if (formData.phoneNumber.length === 10) {
+        addNewRecord(formData);
+      }else{
+        alert("Phone number should be of 10 digits.");  
+      }
     } else {
-      console.log(formData);
       alert("All the fields must be filled");
     }
     setIsAddNewRecord(false);
